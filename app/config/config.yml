@@ -57,3 +57,21 @@ framework:
         #
         # Whether the validation services are enabled in the application
         enabled: false
+#
+# Basic configuration for the monolog features
+monolog:
+    #
+    # List of available log strategies available to the application
+    handlers:
+        #
+        # The default applicational log to be used
+        application:
+            #
+            # Type of the log being generated
+            type: "stream"
+            #
+            # The path of where the file will be stored
+            path: "%kernel.logs_dir%/%kernel.environment%/application.log"
+            #
+            # The lowest level of the entry that will get writen to the log
+            level: "warning"

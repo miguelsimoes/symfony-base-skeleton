@@ -48,6 +48,7 @@ class ApplicationKernel extends Kernel
             #
             # Symfony bundles required by the application
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new Symfony\Bundle\MonologBundle\MonologBundle(),
             #
             # The specific application bundle initialization
             new Application\ApplicationBundle(),

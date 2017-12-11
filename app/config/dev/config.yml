@@ -33,6 +33,18 @@ framework:
         # The templating engines to use
         engines: ['twig']
 #
+# Basic configuration for the monolog features
+monolog:
+    #
+    # List of available log strategies available to the application
+    handlers:
+        #
+        # The default applicational log to be used
+        application:
+            #
+            # The lowest level of the entry that will get writen to the log
+            level: "debug"
+#
 # Basic configuration for the twig features
 twig:
     #
