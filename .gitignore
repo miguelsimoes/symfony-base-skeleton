@@ -6,6 +6,7 @@
 /var/cache/*
 /var/log/*
 /vendor/*
+.env
 #
 # List of files and directories that are exceptions within the patterns to exclude
 !/bin/console
