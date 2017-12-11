@@ -1,0 +1,73 @@
+{
+    "name": "smsimoes/symfony-skeleton",
+    "license": "MIT",
+    "type": "project",
+    "description": "Skeleton application to be used as a base start to create new Symfony based applications",
+    "authors": [
+        {
+            "name": "Miguel Simões",
+            "email": "msimoes@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "app/ApplicationCache.php",
+            "app/ApplicationKernel.php"
+        ],
+        "psr-4": {
+            "Application\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "": "tests/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "5.5.9"
+        },
+        "preferred-install": {
+            "": "dist"
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "symfony-app-dir"  : "app",
+        "symfony-bin-dir"  : "bin",
+        "symfony-tests-dir": "tests",
+        "symfony-var-dir"  : "var",
+        "symfony-web-dir"  : "public"
+    },
+    "prefer-stable": true,
+    "require": {
+        "php": "^5.5|^7.0",
+
+        "sensio/distribution-bundle": "^5.0",
+        "sensio/framework-extra-bundle": "^5.1",
+        "symfony/dotenv": "^3.4",
+        "symfony/templating": "^3.4",
+        "symfony/twig-bundle": "^3.4",
+        "symfony/yaml": "^3.4"
+    },
+    "require-dev": {
+        "symfony/debug-bundle": "^3.4",
+        "symfony/twig-bundle" : "^3.4",
+        "symfony/web-profiler-bundle": "^3.4",
+        "symfony/web-server-bundle": "^3.4"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ],
+        "post-update-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+        ]
+    }
+}

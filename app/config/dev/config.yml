@@ -1,0 +1,58 @@
+#
+# Base configuration for the development environment
+imports:
+    - { resource: ../config.yml }
+#
+# Basic configuration for the framework features under the development environment
+framework:
+    #
+    # Configuration of the profiler component in the framework
+    profiler:
+        #
+        # Whether to enable the profiler services or not in the service container
+        enabled: true
+        #
+        # Whether to enable the profiler only when exceptions are thrown
+        only_exceptions: false
+    #
+    # Configuration of the router component in the framework
+    router:
+        #
+        # The path the main routing resource that contains the routes and 
+        # imports the router should load.
+        resource: "%kernel.root_dir%/config/dev/routing.yml"
+        #
+        # Determines the routing generator behaviour. When generating a route 
+        # that has specific requirements, the generator can behave differently 
+        # in case the used parameters do not meet these requirements.
+        strict_requirements: true
+    #
+    # Configuration for the templating component in the framework
+    templating:
+        #
+        # The templating engines to use
+        engines: ['twig']
+#
+# Basic configuration for the twig features
+twig:
+    #
+    #
+    debug: "%kernel.debug%"
+    #
+    #
+    strict_variables: "%kernel.debug%"
+    #
+    # List of templates to be used while generating forms
+    form_themes:
+        - "bootstrap_3_layout.html.twig"
+
+#
+# Basic configuration for the web profiler features
+web_profiler:
+    #
+    # Whether to display the web debug toolbar
+    toolbar: true
+    #
+    # Whether to intercept the redirects to verify the collected data before
+    # following the redirect
+    intercept_redirects: "%kernel.debug%"

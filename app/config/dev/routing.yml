@@ -1,0 +1,16 @@
+#
+# Imports the routes required to display the web debug toolbar
+_wdt:
+    resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
+    prefix:   /_wdt
+
+#
+# Imports the routes required to display the symfony profiler
+_profiler:
+    resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
+    prefix:   /_profiler
+
+#
+# Imports the routes required to display the application
+_main:
+    resource: "../routing.yml"

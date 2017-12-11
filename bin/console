@@ -1,0 +1,59 @@
+#!/usr/bin/env php
+<?php
+
+/*
+ * This file is part of Miguel Simões generic packages.
+ *
+ * (c) Miguel Simões <msimoes@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Debug\Debug;
+use Symfony\Component\Dotenv\Dotenv;
+
+#
+# We need to ensure that the time limits do not stop execution of command line
+set_time_limit(0);
+#
+# Retrieve the autoloader to be used with the current execution
+$loader = require __DIR__ .'/../vendor/autoload.php';
+
+#
+# Initialize the command line execution by retrieving the information from the
+# provided arguments and/or environment configuration
+if (false === getenv('APPLICATION_ENVIRONMENT') || empty(getenv('APPLICATION_ENVIRONMENT'))) {
+    /* We do not have the environment available, we will need to retrieve it from the configuration */
+    (new Dotenv())->load(__DIR__.'/../.env');
+}
+#
+# Initilize the input configuration so we can retrieve the information associated
+# with the command
+$input = new ArgvInput();
+
+$environment = $input->getParameterOption(['--env', '-e'], getenv('APPLICATION_ENVIRONMENT'));
+$debug = "0" !== getenv('APPLICATION_DEBUG') && !$input->hasParameterOption(['--no-debug', '']) && 'prod' !== $environment;
+
+if ($debug && 'prod' !== $environment) {
+  /* When the debug mode is enabled, we will need to activate the required component */
+  Debug::enable();
+}
+#
+# We will bootstrap the kernel right away since we may need to wrap it on the
+# HttpCache layer of symfony
+$kernel = new ApplicationKernel($environment, $debug);
+
+if ('prod' === $environment) {
+    #
+    # When under the production environment, we want to improve the application
+    # by using all the possible caches available
+    require __DIR__.'/../var/bootstrap.php.cache';
+}
+
+#
+# And we now execute the command line with the retrieved configuration
+$application = new Application($kernel);
+$application->run($input);

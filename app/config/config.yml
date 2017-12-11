@@ -1,0 +1,59 @@
+#
+# Basic configuration for the framework component
+framework:
+   #
+    # The default locale is used if no _locale routing parameter has been set
+    default_locale: "%env(APPLICATION_LOCALE)%"
+    #
+    # Whether the Edge Server Side Includes are enabled
+    esi: true
+    #
+    # Configuration for the form component in the framework
+    form:
+        #
+        # Whether the form services are enabled in the application
+        enabled: false
+    #
+    # Configuration for the HTTP Cache in the framework
+    fragments:
+        #
+        # Whether the fragment services are enabled in the aplication
+        enabled: false
+    #
+    # This determines whether the _method request parameter is used as the 
+    # intended HTTP method on POST requests.
+    http_method_override: true
+    #
+    # Configuration for the router component in the framework
+    router:
+        #
+        # The path the main routing resource that contains the routes and 
+        # imports the router should load.
+        resource: "%kernel.root_dir%/config/routing.yml"
+        #
+        # Determines the routing generator behaviour. When generating a route 
+        # that has specific requirements, the generator can behave differently 
+        # in case the used parameters do not meet these requirements.
+        strict_requirements: ~
+    #
+    # This is a string that should be unique to your application and it's 
+    # commonly used to add more entropy to security related operations.
+    secret: %env(SYMFONY_SECRET)%
+    #
+    # Configuration for the serializer component in the framework
+    serializer:
+        #
+        # Whether the serializer services are enabled on the application
+        enabled: false
+    #
+    # Configuration for the translation component in the framework
+    translator:
+        #
+        # Whether the translator services are enabled in the application
+        enabled: false
+    #
+    # Configuration for the validation component in the framework
+    validation:
+        #
+        # Whether the validation services are enabled in the application
+        enabled: false

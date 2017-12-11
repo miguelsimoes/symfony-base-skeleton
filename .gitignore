@@ -1,0 +1,16 @@
+#
+# List of files and directories to be excluded from the repository
+/bin/*
+/node_modules/*
+/var/*
+/var/cache/*
+/var/log/*
+/vendor/*
+#
+# List of files and directories that are exceptions within the patterns to exclude
+!/bin/console
+!/var
+!/var/cache
+!/var/cache/.gitkeep
+!/var/log
+!/var/log/.gitkeep
